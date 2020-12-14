@@ -45,8 +45,18 @@
 
     //leia autode arv (count)
     //kontrolli, kas massiviid on ühepikkused
-    echo count($auto_margid)."<br>";
-    echo count($vin_koodid)."<br><br>";
+    $autod = count($auto_margid);
+    $margid = count($vin_koodid);
+
+    if ($autod > $margid) {
+        echo 'Autosid on rohkem kui mudelid';
+    }  elseif ($autod == $margid){
+        echo 'Autosid ja mudeleid on sama palju';
+    } else {
+        echo 'Mudeleid on rohkem kui autosid';
+    }
+    echo "<br><br>";
+
 
     //leia eraldi Toyotade ja Audide arv nimekirjas
     function count_array_values($my_array, $match)
@@ -66,11 +76,15 @@
     echo "Toyota: ".count_array_values($auto_margid, "Toyota").", Audi: ".count_array_values($auto_margid, "Audi")."<br><br>";
 
     //leia ja väljasta VIN koodid,  mille märkide arv on väiksem kui 17 - see ei tule välja
+    echo "VIN koodid, kus on vähem kui 17 märki: <br>";
     foreach ($vin_koodid as $entry) {
-        if ($entry = array_map('strlen', $vin_koodid) < 17)
-            echo $entry['value'];
+        if (strlen($entry) < 17) {
+            echo $entry.'<br>';
+        }
 
     }
+
+    echo "<br><br>";
 
     //leia keskmine palk
     $palgad = array(1220,1213,1295,1312,1298,1354,1296,1286,1292,1327,1369,1455);
@@ -138,6 +152,23 @@
         echo '<script>alert("Ei esine! \n")</script>';
     }
 
+?>
+
+<!-- tekita /img  kataloog ja sinna profiilipildid samade nimedega
+ kuva massiivist kolmas pilt
+ kuva massiivist kõik pildid
+ kuva pildid Bootstrapi abil 6 veerus
+-->
+<html>
+<head>
+    <title>PHP in HTML Example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<?php
+
     $photos = array("prentice.jpg","freeland.jpg","peterus.jpg","devlin.jpg","gabriel.jpg","pete.jpg");
     $photo = $photos['2'];
     echo "<img src='img/$photo'> <br>";
@@ -147,18 +178,18 @@
     }
 
 
-    $count = 4;
+    $count = 6;
 
+    echo '<div class="container">';
     echo '<div class="row">';
     for ($i = 0; $i < count($photos); $i++) {
 
-        echo '<div class="col-md-3"><img class="img-responsive" src="img/' . $photos[$i] . '"/></div>';
-
-        if ($count % 4 == 0) { // time to break line
-            echo '</div>';
-            echo '<div class="row">';
-        }
-
-        $count++;
+        echo '<div class="col-sm-2"><img class="img-responsive" src="img/' . $photos[$i] . '"/></div>';
     }
+
     echo '</div>';
+    echo '</div>';
+?>
+
+</body>
+</html>
