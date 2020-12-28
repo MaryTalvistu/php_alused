@@ -31,9 +31,25 @@ for($rida=1; $rida<=10; $rida++){
 
 echo '<br><br>';
 
-
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yl 6</title>
+</head>
+<body>
+<form action="yl6.php" method="get">
+    Ühel küljel tärne <input type="text" name="a"><br>
+    <input type="submit" name="submit" value="Saada">
+</form>
+</body>
+</html>
+<?php
 //loo tsükli abil tärnidest ruut, mille suuruse lisab kasutaja läbi veebivormi
-$t2rne = $_GET['a'];
+if (isset($_GET['submit'])) {
+
+    $t2rne = $_GET['a'];
 
 for($rida=1; $rida<=$t2rne; $rida++){
     for($veerg=1; $veerg<=$t2rne; $veerg++){
@@ -41,6 +57,8 @@ for($rida=1; $rida<=$t2rne; $rida++){
     }
     echo '<br>';
 }
+
+};
 
 echo '<br><br>';
 
@@ -87,3 +105,5 @@ shuffle($poisid);
 for($nimi=0;$nimi<count($tydrukud);$nimi++){
     echo $tydrukud[$nimi].' ja '. $poisid[$nimi].'<br>';
 }
+
+?>
