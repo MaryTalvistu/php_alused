@@ -49,7 +49,7 @@
     $margid = count($vin_koodid);
 
     if ($autod > $margid) {
-        echo 'Autosid on rohkem kui mudelid';
+        echo 'Autosid on rohkem kui mudeleid';
     }  elseif ($autod == $margid){
         echo 'Autosid ja mudeleid on sama palju';
     } else {
