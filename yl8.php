@@ -21,6 +21,7 @@ $paevi = $lopp -> diff($tana);
 echo $paevi->days."<br><br>";
 
 //Väljasta vastavalt aastaajale pilt (kevad, suvi, sügis, talv)
+//https://css-tricks.com/snippets/php/change-graphics-based-on-season/
 function current_season()
 {
     //piltide asukoht
