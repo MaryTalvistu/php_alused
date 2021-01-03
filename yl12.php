@@ -71,34 +71,36 @@ if (($ava = fopen("{$allikas}", "r")) !== FALSE)
     {
         //Iga individuaalne massiiv on osa suurest massiivist $info
         $info[] = [(string)$data[0], (string)$data[1], (int)$data[2]];
-        $sugu[] = $data[1];
-        $palk[] = $data[2];
-
     }
 
     //Faili sulgemine
     fclose($ava);
 }
 
-echo "<pre>";
-var_dump($info);
-echo "</pre>";
+$mehed = array();
+$naised = array();
 
-$keskmine = array_sum($palk) / count($palk);
-echo $keskmine."<br><br>";
-
-
-
-$mn = array_count_values($sugu);
-echo 'Nimekirjas on '.$mn['m'].' meest.<br>';
-echo 'Nimekirjas on '.$mn['n'].' naist.<br>';
-
-if ($mn['m'] >$mn['n']){
-    echo "Mehi on rohkem.";
-} else {
-    echo "Naisi on rohkem.";
+foreach ($info as $isik) {
+    if ($isik[1] == "m") {
+        $mehed[] = $isik[2];
+    } else {
+        $naised[] = $isik[2];
+    }
 }
 
+
+arsort($mehed);
+arsort($naised);
+
+$nkeskmine = array_sum($naised) / count($naised);
+echo "Naiste keskmine palk on ".$nkeskmine.".<br><br>";
+
+echo "Naiste kõrgeim palk on ".max($naised).".<br><br>";
+
+$mkeskmine = array_sum($mehed) / count($mehed);
+echo "Meeste keskmine palk on ".round($mkeskmine).".<br><br>";
+
+echo "Meeste kõrgeim palk on ".max($mehed).".<br><br>";
 
 
 ?>
