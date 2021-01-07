@@ -1,4 +1,4 @@
-<!-- Ülesanne 2_2 Mary-Ann Talvistu. 06/01/2021 -->
+<!-- Ülesanne 2_3 Mary-Ann Talvistu. 06/01/2021 -->
 <?php include('config.php'); ?>
 <?php
 if(isset($_POST['id'])) {
